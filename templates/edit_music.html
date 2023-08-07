@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Music Record</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Music Record</h2>
+        <form action="{{ url_for('edit_music_by_title_route') }}" method="post">
+            <label>Search by Title:</label>
+            <input type="text" name="title" required>
+            <button type="submit">Search</button>
+        </form>
+        {% if result %}
+        <form action="{{ url_for('update_music_route') }}" method="post">
+            <input type="hidden" name="id" value="{{ result.id }}">
+            <label>Title:</label>
+            <input type="text" name="new_title" value="{{ result.title }}" required>
+            <label>Composer:</label>
+            <input type="text" name="composer" value="{{ result.composer }}" required>
+            <label>Ensemble:</label>
+            <input type="text" name="ensemble" value="{{ result.ensemble }}" required>
+            <label>Last Performed (YYYY-MM-DD):</label>
+            <input type="text" name="date_performed" value="{{ result.date_performed }}" required>
+            <button type="submit">Update</button>
+        </form>
+        {% endif %}
+        <p><a href="{{ url_for('index') }}">Back to Main Page</a></p>
+    </div>
+</body>
+</html>

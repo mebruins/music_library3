@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Music Library</h1>
+        <h2>Add Music</h2>
+        <form action="{{ url_for('add_music_route') }}" method="post">
+            <label>Title:</label>
+            <input type="text" name="title" required>
+            <label>Composer:</label>
+            <input type="text" name="composer" required>
+            <label>Ensemble:</label>
+            <input type="text" name="ensemble" required>
+            <label>Date Performed (YYYY-MM-DD):</label>
+            <input type="date" name="date_performed" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Search Music</h2>
+        <form action="{{ url_for('search_by_title_route') }}" method="post">
+            <label>Search by Title:</label>
+            <input type="text" name="search_title" required>
+            <button type="submit">Search</button>
+        </form>
+        <form action="{{ url_for('search_by_composer_route') }}" method="post">
+            <label>Search by Composer:</label>
+            <input type="text" name="search_composer" required>
+            <button type="submit">Search</button>
+        </form>
+        <form action="{{ url_for('search_by_ensemble_route') }}" method="post">
+            <label>Search by Ensemble:</label>
+            <input type="text" name="search_ensemble" required>
+            <button type="submit">Search</button>
+        </form>
+        <form action="{{ url_for('search_by_date_performed_route') }}" method="post">
+            <label>Search by Date Last Performed (YYYY-MM-DD):</label>
+            <input type="date" name="search_date_performed" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container">
+        <form action="{{ url_for('edit_music_by_title_route') }}" method="get">
+        <h2>Edit Music File</h2>
+        <button type="submit">Edit</button>
+    </div>
+</body>
+</html>
